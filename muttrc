@@ -1,0 +1,67 @@
+
+
+set folder="imaps://imap.example.com/"
+set record="imaps://imap.example.com/Sent Items"
+set postponed="imaps://imap.example.com/Drafts"
+set spoolfile="+INBOX"
+
+
+bind editor <space> noop
+macro index,pager D "<clear-flag>N<save-message>=Deleted<space>Items<enter>"
+
+#folder-hook . 'macro index d "<save-message>=Deleted<space>Items<enter>"'
+
+
+#set imap_check_subscribed=yes
+set mail_check = 60
+set timeout = 15
+
+set query_command="mutt-ldap.pl '%s'"
+bind editor "\t" complete-query
+
+set sendmail="/usr/bin/msmtp"
+
+set certificate_file =~/.mutt/certificates
+set header_cache=~/.mutt/header_cache
+set message_cachedir=~/.mutt/message_cache
+
+set from = "Jonh Doe <jdoe@examplecom>"
+set use_from = "yes"
+set envelope_from = "yes"
+
+set forward_format="Fwd: %s"
+set mime_forward=yes
+set mime_forward_rest=yes
+
+bind index G imap-fetch-mail
+
+set editor="vim -c 'set tw=72'"
+set sort=threads
+#set sort_aux=date-received
+#set sort = reverse-date
+set index_format="%4C %Z %{%b %d %R} %-15.15L (%4l) %s"
+
+auto_view text/html
+
+set pager_index_lines= 15
+
+set imap_user = "jdoe"
+set imap_pass = "secret"
+
+mailboxes =INBOX =Drafts "=Sent Items" "=Deleted Items" \
+    =Folder1 \
+    =Folder2 \
+
+
+set sort_sidebar=unsorted
+set sidebar_width   = 35
+set sidebar_visible = yes
+color sidebar_new yellow default
+color progress default magenta
+color sidebar green default
+bind index <left> sidebar-prev
+bind index <right> sidebar-next
+bind index <space> sidebar-open
+bind index <Esc>S sidebar-toggle
+
+macro index \Ci  "<change-folder>=INBOX<enter>"  "go to INBOX"
