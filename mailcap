@@ -1,0 +1,5 @@
+text/html; lynx -dump %s; copiousoutput; nametemplate=%s.html
+
+application/pdf; /usr/bin/mupdf '%s' ; test=test "$DISPLAY" != ""
+
+image/*; sxiv %s \; reset
