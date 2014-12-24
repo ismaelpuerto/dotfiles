@@ -9,10 +9,6 @@ set spoolfile="+INBOX"
 bind editor <space> noop
 macro index,pager D "<clear-flag>N<save-message>=Deleted<space>Items<enter>"
 
-#folder-hook . 'macro index d "<save-message>=Deleted<space>Items<enter>"'
-
-
-#set imap_check_subscribed=yes
 set mail_check = 60
 set timeout = 15
 
