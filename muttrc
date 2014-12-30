@@ -46,8 +46,7 @@ set imap_pass = "secret"
 
 mailboxes =INBOX =Drafts "=Sent Items" "=Deleted Items" \
     =Folder1 \
-    =Folder2 \
-
+    =Folder2/Subfolder3
 
 set sort_sidebar=unsorted
 set sidebar_width   = 35
